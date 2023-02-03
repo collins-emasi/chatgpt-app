@@ -1,0 +1,55 @@
+#: import ScrollEffect kivy.effects.scroll.ScrollEffect
+
+
+<MessageScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: app.theme_cls.bg_normal
+
+        MDTopAppBar:
+            id: logoToolBar
+            height: dp(50)
+            title: "Chat GPT"
+            right_action_items: [['dots-vertical', lambda x:x]]
+            margin: dp(0)
+
+        ScrollView:
+            do_scroll_y: True
+            on_effect_cls: "ScrollEffect"
+            bar_width: dp(0)
+
+            MDBoxLayout:
+                adaptive_height: True
+                orientation: 'vertical'
+                md_bg_color: app.theme_cls.primary_color
+
+                MDBoxLayout:
+                    height: dp(60)
+                    size_hint_y: None
+
+                    ScrollView:
+                        on_effect_cls: "ScrollEffect"
+                        do_scroll_y: True
+                        bar_width: 0
+
+                        MDBoxLayout:
+                            id: story_layout
+                            adaptive_width: True
+                            spacing: dp(10)
+                            padding: [10, 0, 0, 0]      # Padding [right, top, left, bottom]
+                            StoryWithIcon:
+                            StoryWithImage:
+                                text: "Username"
+                                source: "assets/imgs/profile-pic.png"
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    md_bg_color: app.theme_cls.bg_normal
+                    size_hint_y: None
+                    adaptive_height: True
+                    radius: [20, 20, 0, 0]
+                    padding: [0, 0, 0, 40]
+
+                    MDList:
+                        id: chatTimeLine
+                        spacing: dp(10)
